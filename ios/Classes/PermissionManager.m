@@ -7,6 +7,7 @@
 #import "UnknownPermissionStrategy.h"
 #import "LocationPermissionStrategy.h"
 #import "PhotoPermissionStrategy.h"
+#import "AudioVideoPermissionStrategy.h"
 @implementation PermissionManager {
     NSMutableArray <id <PermissionStrategy>> *_strategyInstances;
 }
@@ -81,6 +82,8 @@
             case PermissionGroupLocationAlways:
             case PermissionGroupLocationWhenInUse:
             return [[LocationPermissionStrategy alloc] initWithLocationManager];
+        case PermissionGroupCamera:
+            return [AudioVideoPermissionStrategy new];
             case PermissionGroupPhotos:
             return [PhotoPermissionStrategy new];
             
